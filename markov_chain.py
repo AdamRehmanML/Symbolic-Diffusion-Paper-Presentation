@@ -12,8 +12,8 @@ class MarkovChain(Scene):
         q_label = MathTex("q(x_t|x_{t-1})", font_size=30).next_to(forward_arrow, UP)
 
         # Reverse Process (p)
-        reverse_arrow = CurvedArrow(state_1.get_left(), state_0.get_right(), angle=-TAU/8, color=YELLOW)
-        p_label = MathTex("p_{\\theta}(x_{t-1}|x_t)", font_size=30, color=YELLOW).next_to(reverse_arrow, DOWN)
+        reverse_arrow = CurvedArrow(state_1.get_left(), state_0.get_right(), angle=-TAU/8, color=ORANGE)
+        p_label = MathTex("p_{\\theta}(x_{t-1}|x_t)", font_size=30, color=ORANGE).next_to(reverse_arrow, DOWN)
 
         # 3. Animate
         self.play(FadeIn(state_0), FadeIn(state_1))

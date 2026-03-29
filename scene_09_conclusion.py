@@ -5,7 +5,7 @@ class Conclusion(Scene):
         # ─── Key Takeaways ───
         title = Text("Key Takeaways", font_size=36, color=GREEN)
         self.play(Write(title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title.animate.scale(0.6).to_edge(UP))
 
         # Three takeaway nodes connected in a triangle
@@ -23,7 +23,7 @@ class Conclusion(Scene):
 
         t3 = LabeledDot(
             label=Tex("Flexible\\\\Infilling", font_size=18),
-            color=YELLOW, radius=0.55
+            color=ORANGE, radius=0.55
         ).shift(DOWN * 2)
         t3_desc = Text("No retraining needed\nfor conditional tasks", font_size=16).next_to(t3, DOWN, buff=0.25)
 
@@ -36,13 +36,13 @@ class Conclusion(Scene):
         self.play(Create(a1), FadeIn(t2), FadeIn(t2_desc))
         self.play(Create(a2), FadeIn(t3), FadeIn(t3_desc))
         self.play(Create(a3))
-        self.wait(2.5)
+        self.wait(18.8)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Limitations ───
         lim_title = Text("Limitations", font_size=32, color=RED)
         self.play(Write(lim_title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(lim_title.animate.scale(0.6).to_edge(UP))
 
         lims = [
@@ -64,13 +64,13 @@ class Conclusion(Scene):
 
         for d in lim_dots:
             self.play(FadeIn(d, shift=RIGHT * 0.2), run_time=0.5)
-            self.wait(0.4)
-        self.wait(2)
+            self.wait(0.8)
+        self.wait(15.0)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Thank You ───
         thanks = Text("Thank You!", font_size=48, color=GREEN, weight=BOLD)
-        questions = Text("Questions?", font_size=28, color=YELLOW)
+        questions = Text("Questions?", font_size=28, color=ORANGE)
         ref = Text(
             'Mittal et al., "Symbolic Music Generation\nwith Diffusion Models", ISMIR 2021',
             font_size=18, color=GREY, line_spacing=0.7
@@ -80,5 +80,5 @@ class Conclusion(Scene):
         self.play(Write(thanks, run_time=1))
         self.play(FadeIn(questions, shift=UP * 0.2))
         self.play(FadeIn(ref, shift=UP * 0.15))
-        self.wait(3)
+        self.wait(22.5)
         self.play(*[FadeOut(m) for m in self.mobjects])

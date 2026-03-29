@@ -6,7 +6,7 @@ class Background(Scene):
         # ─── Part A: Piano Roll ───
         title_a = Text("What is Symbolic Music?", font_size=36, color=GREEN)
         self.play(Write(title_a))
-        self.wait(1)
+        self.wait(4.4)
         self.play(title_a.animate.scale(0.6).to_edge(UP))
 
         # Piano roll grid
@@ -37,13 +37,13 @@ class Background(Scene):
 
         self.play(Create(piano_roll), run_time=1.5)
         self.play(FadeIn(time_lbl), Write(desc))
-        self.wait(2)
+        self.wait(15.0)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Part B: Autoregressive Problem ───
         title_b = Text("Autoregressive Models", font_size=36, color=RED)
         self.play(Write(title_b))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title_b.animate.scale(0.6).to_edge(UP))
 
         # Token chain as LabeledDots
@@ -60,7 +60,7 @@ class Background(Scene):
 
         self.play(LaggedStart(*[FadeIn(s) for s in states], lag_ratio=0.15))
         self.play(LaggedStart(*[GrowArrow(a) for a in arrows], lag_ratio=0.1))
-        self.wait(1)
+        self.wait(4.4)
 
         # Error propagation - highlight with red
         problem = Text("Exposure bias: errors compound!", font_size=22, color=RED)
@@ -75,13 +75,13 @@ class Background(Scene):
         self.play(Create(err_circles[0]), Write(problem))
         self.play(Create(err_circles[1]))
         self.play(Create(err_circles[2]))
-        self.wait(2)
+        self.wait(15.0)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Part C: Motivation ───
-        title_c = Text("Why Latent Diffusion?", font_size=36, color=YELLOW)
+        title_c = Text("Why Latent Diffusion?", font_size=36, color=ORANGE)
         self.play(Write(title_c))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title_c.animate.scale(0.6).to_edge(UP))
 
         # Show the key insight as a simple diagram
@@ -91,7 +91,7 @@ class Background(Scene):
 
         a1 = Arrow(discrete.get_right(), continuous.get_left(), buff=0.1, color=WHITE)
         a2 = Arrow(continuous.get_right(), diffusion.get_left(), buff=0.1, color=WHITE)
-        l1 = MathTex(r"\text{MusicVAE}", font_size=22, color=YELLOW).next_to(a1, UP, buff=0.1)
+        l1 = MathTex(r"\text{MusicVAE}", font_size=22, color=ORANGE).next_to(a1, UP, buff=0.1)
         l2 = Text("Apply here!", font_size=18, color=GREEN).next_to(a2, UP, buff=0.1)
 
         cross = Cross(stroke_color=RED, stroke_width=3).scale(0.3).move_to(discrete)
@@ -100,15 +100,15 @@ class Background(Scene):
         self.play(FadeIn(discrete), FadeIn(continuous), FadeIn(diffusion))
         self.play(GrowArrow(a1), Write(l1))
         self.play(GrowArrow(a2), Write(l2))
-        self.wait(1)
+        self.wait(4.4)
         self.play(Create(cross))
         self.play(Write(check))
 
         insight = MathTex(
             r"\text{Can't diffuse discrete tokens} \rightarrow \text{diffuse latent codes instead!}",
-            font_size=26, color=YELLOW
+            font_size=26, color=ORANGE
         ).next_to(VGroup(discrete, diffusion), DOWN, buff=0.8)
         self.play(Write(insight))
-        self.wait(3)
+        self.wait(22.5)
 
         self.play(*[FadeOut(m) for m in self.mobjects])

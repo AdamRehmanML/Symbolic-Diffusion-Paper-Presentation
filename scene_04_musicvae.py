@@ -5,7 +5,7 @@ class MusicVAEScene(Scene):
         # ─── Title ───
         title = Text("MusicVAE", font_size=36, color=GREEN)
         self.play(Write(title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title.animate.scale(0.6).to_edge(UP))
 
         # ─── VAE Diagram: Encoder → z → Decoder ───
@@ -17,7 +17,7 @@ class MusicVAEScene(Scene):
             label=MathTex(r"\mathbf{z}", font_size=26), color=GREEN, radius=0.5
         )
         decoder = VGroup(
-            Rectangle(height=2, width=2.5, color=YELLOW),
+            Rectangle(height=2, width=2.5, color=ORANGE),
             Text("Decoder\n(Hier. LSTM)", font_size=18)
         )
 
@@ -38,19 +38,19 @@ class MusicVAEScene(Scene):
         self.play(GrowArrow(arr2), Create(decoder))
         self.play(GrowArrow(inp_arr), FadeIn(inp_lbl))
         self.play(GrowArrow(out_arr), FadeIn(out_lbl))
-        self.wait(1)
+        self.wait(4.4)
 
         # z dimension annotation
         z_dim = MathTex(r"\mathbf{z} \in \mathbb{R}^{512}", font_size=28, color=GREEN)
         z_dim.next_to(z_dot, DOWN, buff=0.3)
         self.play(Write(z_dim))
-        self.wait(1.5)
+        self.wait(6.6)
 
         # ─── Shrink & show hierarchical latents ───
         vae_all = VGroup(encoder, z_dot, decoder, arr1, arr2, inp_lbl, inp_arr, out_lbl, out_arr, z_dim)
         self.play(vae_all.animate.scale(0.5).to_edge(UP, buff=0.6))
 
-        hier_title = Text("Hierarchical Latent Sequence", font_size=26, color=YELLOW)
+        hier_title = Text("Hierarchical Latent Sequence", font_size=26, color=ORANGE)
         hier_title.shift(UP * 0.2)
         self.play(Write(hier_title))
 
@@ -87,14 +87,14 @@ class MusicVAEScene(Scene):
         VGroup(dim_eq, bar_eq).arrange(RIGHT, buff=0.3).next_to(z_row, DOWN, buff=0.5)
 
         self.play(Write(dim_eq), Write(bar_eq))
-        self.wait(1)
+        self.wait(4.4)
 
         key = MathTex(
             r"\text{Key: continuous space} \rightarrow \text{apply diffusion!}",
-            font_size=26, color=YELLOW
+            font_size=26, color=ORANGE
         ).next_to(bar_eq, DOWN, buff=0.5)
-        box = SurroundingRectangle(key, color=YELLOW, buff=0.15, stroke_width=2)
+        box = SurroundingRectangle(key, color=ORANGE, buff=0.15, stroke_width=2)
         self.play(Write(key), Create(box))
-        self.wait(3)
+        self.wait(22.5)
 
         self.play(*[FadeOut(m) for m in self.mobjects])

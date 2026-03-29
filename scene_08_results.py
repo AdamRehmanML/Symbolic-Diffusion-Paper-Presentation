@@ -5,7 +5,7 @@ class Results(Scene):
         # ─── Title ───
         title = Text("Results & Evaluation", font_size=36, color=GREEN)
         self.play(Write(title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title.animate.scale(0.6).to_edge(UP))
 
         # ─── Comparison as nodes ───
@@ -45,26 +45,26 @@ class Results(Scene):
         self.play(FadeIn(baseline), Write(s1), GrowFromEdge(b1, DOWN))
         self.play(GrowArrow(arr1), FadeIn(rnn), Write(s2), GrowFromEdge(b2, DOWN))
         self.play(GrowArrow(arr2), FadeIn(ours), Write(s3), GrowFromEdge(b3, DOWN))
-        self.wait(1)
+        self.wait(4.4)
 
         # Highlight winner
         winner = SurroundingRectangle(VGroup(ours, s3), color=GREEN, buff=0.2, stroke_width=2)
         self.play(Create(winner))
         self.play(Indicate(ours, color=GREEN, scale_factor=1.1))
-        self.wait(2)
+        self.wait(15.0)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Key Findings ───
-        find_title = Text("Key Findings", font_size=32, color=YELLOW)
+        find_title = Text("Key Findings", font_size=32, color=ORANGE)
         self.play(Write(find_title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(find_title.animate.scale(0.6).to_edge(UP))
 
         findings = [
             ("Coherent long-range structure over 64 bars", GREEN),
             ("No compounding errors (non-autoregressive)", GREEN),
             ("Flexible infilling without retraining", BLUE),
-            ("Iterative refinement captures temporal dependencies", YELLOW),
+            ("Iterative refinement captures temporal dependencies", ORANGE),
         ]
 
         dots = VGroup()
@@ -81,7 +81,7 @@ class Results(Scene):
 
         for d in dots:
             self.play(FadeIn(d, shift=RIGHT * 0.2), run_time=0.6)
-            self.wait(0.5)
+            self.wait(2.2)
 
-        self.wait(2.5)
-        self.play(*[FadeOut(m) for m in self.mobjects])
+        self.wait(18.8)
+        # self.play(*[FadeOut(m) for m in self.mobjects])

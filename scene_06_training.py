@@ -6,7 +6,7 @@ class Training(Scene):
         # ─── Title ───
         title = Text("Training Process", font_size=36, color=GREEN)
         self.play(Write(title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(title.animate.scale(0.6).to_edge(UP))
 
         # ─── Training Loop as a circular flow ───
@@ -15,7 +15,7 @@ class Training(Scene):
             (r"t", "Sample\ntimestep", GREY),
             (r"\epsilon", "Sample\nnoise", RED),
             (r"z_t", "Create\nnoisy input", BLUE_D),
-            (r"\hat{\epsilon}", "Predict\nnoise", YELLOW),
+            (r"\hat{\epsilon}", "Predict\nnoise", ORANGE),
             (r"L", "Compute\nloss", GREEN),
         ]
 
@@ -56,15 +56,15 @@ class Training(Scene):
             self.play(FadeIn(dots[i], scale=0.5), FadeIn(descs[i]))
             if i > 0:
                 self.play(Create(flow_arrows[i-1]), run_time=0.4)
-            self.wait(0.3)
+            self.wait(0.6)
         self.play(Create(flow_arrows[-1]), run_time=0.4)
-        self.wait(2)
+        self.wait(15.0)
         self.play(*[FadeOut(m) for m in self.mobjects])
 
         # ─── Loss equation ───
-        loss_title = Text("Loss Function", font_size=32, color=YELLOW)
+        loss_title = Text("Loss Function", font_size=32, color=ORANGE)
         self.play(Write(loss_title))
-        self.wait(0.5)
+        self.wait(2.2)
         self.play(loss_title.animate.scale(0.6).to_edge(UP))
 
         loss_eq = MathTex(
@@ -77,17 +77,17 @@ class Training(Scene):
             font_size=38
         )
         loss_eq[2].set_color(BLUE)
-        loss_eq[4].set_color(YELLOW)
+        loss_eq[4].set_color(ORANGE)
 
         self.play(Write(loss_eq), run_time=1.5)
-        self.wait(1)
+        self.wait(4.4)
 
         note = MathTex(
             r"\text{Operates on MusicVAE latent codes } z, \text{ not raw MIDI tokens}",
             font_size=24, color=GREEN
         ).next_to(loss_eq, DOWN, buff=0.6)
         self.play(Write(note))
-        self.wait(1)
+        self.wait(4.4)
 
         # ─── Loss curve ───
         axes = Axes(
@@ -111,6 +111,6 @@ class Training(Scene):
         dataset = Text("Dataset: Lakh MIDI (170K+ files)", font_size=18, color=BLUE)
         dataset.next_to(axes, RIGHT, buff=0.3)
         self.play(FadeIn(dataset))
-        self.wait(3)
+        self.wait(22.5)
 
         self.play(*[FadeOut(m) for m in self.mobjects])

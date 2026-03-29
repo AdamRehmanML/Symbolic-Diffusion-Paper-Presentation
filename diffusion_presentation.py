@@ -20,7 +20,7 @@ class SymbolicDiffusion(Scene):
         )
         
         transformer_block = VGroup(
-            Rectangle(height=2, width=3, color=YELLOW),
+            Rectangle(height=2, width=3, color=ORANGE),
             Text("Transf.", font_size=24)
         )
         
